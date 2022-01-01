@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aplicação Vue.js</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css?
+    family=Montserrat:300,400,500,600,700" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1 class="titulo-header">
+      Criptografando e descriptografando um texto
+    </h1>
+  </header>
+
+  <main id="main">
+    <section class="formularios">
+      <div class="form-box">
+        <img src="assets/imgs/locked-padlock.png" />
+        <h2 class="titulo">Criptografar</h2>
+        <p class="subtitulo">Digite o texto para criptografar</p>
+
+        <form v-on:submit.prevent="criptografar">
+          <input type="text"
+            v-model="txtParaCripto"
+            placeholder="Digite o texto"/>
+
+          <input type="submit" value="Criptografar">
+        </form>
+      </div>
+
+      <div class="form-box">
+        <img src="assets/imgs/padlock.png" />
+        <h2 class="titulo">Descriptografar</h2>
+        <p class="subtitulo">Digite o texto para descriptografar</p>
+
+        <form v-on:submit.prevent="descriptografar">
+          <input type="text"
+            v-model="txtParaDescripto"
+            placeholder="Digite o texto"/>
+
+          <input type="submit" value="Descriptografar">
+        </form>
+      </div>
+    </section>
+
+    <section class="box-mensagem" v-if="resultadoTexto.length > 0" >
+
+      <h4 class="subtitulo">{{ resultadoTitulo }}</h4>
+      <h3>{{ resultadoTexto }}</h3>
+
+    </section>
+
+    <section class="box-mensagem" v-if="msgErro.length > 0">
+      <h3 class="titulo-erro">{{ msgErro }}</h3>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
